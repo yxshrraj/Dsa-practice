@@ -1,0 +1,27 @@
+Q ) Max Sum Subarray of size K
+code : 
+class Solution{
+    static long maximumSumSubarray(int K, ArrayList<Integer> Arr,int N){
+         long max = 0;
+         long sum =0;
+         int end=0;
+         int start=0;
+        while(end <N)
+         {
+             sum+=Arr.get(end);
+             if(end-start+1 < K)
+              end++;
+              
+             else if(end-start+1 ==K)
+             {
+                 max= Math.max(max,sum);
+                 sum-=Arr.get(start);
+                 start++;
+                 end++;
+             }
+         }
+         return max;
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
