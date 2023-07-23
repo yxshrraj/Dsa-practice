@@ -1,45 +1,42 @@
 Recursive :
+
+
+
+//User function Template for Java
+
 class Solution{
     
     int ans=0;
-    int func(int ind1, int ind2 ,String S1 ,String S2,int [][]dp)
+    int func(int ind1, int ind2 ,String S1 ,String S2)
     {
         int temp=0;
         
-        if(ind1 <0 || ind2 <0)
+        if(ind1==0 || ind2==0)
         {
             return 0;
-        }
-        if(dp[ind1][ind2]!=-1)
-        {
-            return dp[ind1][ind2];
         }
         
         if(S1.charAt(ind1)==S2.charAt(ind2))
         {
-           temp = 1+func(ind1-1,ind2-1,S1,S2,dp);
+           temp = 1+func(ind1-1,ind2-1,S1,S2);
            ans=Math.max(ans,temp);
         }
-        
-            func(ind1-1,ind2,S1,S2,dp);
-            func(ind1,ind2-1,S1,S2,dp);
-         
-         dp[ind1][ind2]=temp;
+        else
+        {
+            func(ind1-1,ind2,S1,S2);
+            func(ind1,ind2-1,S1,S2);
+        }
         return temp;
     }
     int longestCommonSubstr(String S1, String S2, int n, int m){
-          int dp[][] =new int[n+1][m+1];
-          for(int row[]:dp){
-              Arrays.fill(dp,-1);
-          }
-         int a=func(n-1,m-1,S1,S2,dp); 
+         
+         func(n-1,m-1,S1,S2); 
          return ans;
          
         
          
     }
 }
-
 
 Memiozation : 
 class Solution{
