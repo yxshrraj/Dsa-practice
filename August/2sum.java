@@ -50,3 +50,24 @@ class Solution {
         return ans;
     }
 }
+__________________________________________________________________________________________________________________________
+    code:
+    class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int ans[] =new int[2];
+        int n=nums.length;
+        HashMap<Integer,Integer> mp= new HashMap<>();
+        for(int i=0 ; i<n; i++)
+        {
+          int num=nums[i];
+          int need= target-num;
+          if(mp.containsKey(need))
+          {
+              ans[0]=mp.get(need);
+              ans[1]=i;
+          }
+          mp.put(nums[i],i);
+        }
+        return ans;
+    }
+}
